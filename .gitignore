@@ -1,5 +1,6 @@
 # User-specific stuff
 .idea/
+questions.json
 
 *.iml
 *.ipr
