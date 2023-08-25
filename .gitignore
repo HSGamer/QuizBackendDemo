@@ -1,6 +1,7 @@
 # User-specific stuff
 .idea/
 questions.json
+wallet.json
 
 *.iml
 *.ipr

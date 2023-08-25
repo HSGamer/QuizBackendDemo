@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 @Data
 public class AnswerListRequest {
     private List<Answer> answers;
+    private String wallet;
 
     public Map<String, String> asMap() {
         return answers.stream().collect(Collectors.toMap(Answer::getKey, Answer::getAnswer));
