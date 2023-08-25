@@ -2,6 +2,7 @@ package me.hsgamer.quizbackenddemo;
 
 import io.javalin.Javalin;
 import io.javalin.http.HttpStatus;
+import io.javalin.plugin.bundled.CorsPluginConfig;
 import me.hsgamer.quizbackenddemo.loader.QuestionLoader;
 import me.hsgamer.quizbackenddemo.loader.WalletLoader;
 import me.hsgamer.quizbackenddemo.model.AnswerListRequest;
@@ -21,7 +22,7 @@ public class QuizBackendDemo {
 
         int port = args.length > 0 ? Integer.parseInt(args[0]) : 7070;
 
-        var app = Javalin.create()
+        var app = Javalin.create(config -> config.plugins.enableCors(corsContainer -> corsContainer.add(CorsPluginConfig::anyHost)))
                 .get("/", ctx -> ctx.result("Hello World"))
                 .get("/questions", ctx -> ctx.json(QuestionListResponse.from(questionLoader.getQuestionList().getQuestions())))
                 .post("/answer", ctx -> {
